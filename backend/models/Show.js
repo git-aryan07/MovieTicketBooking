@@ -1,19 +1,14 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose from "mongoose";
 
-const Showschema=new Schema({
+const showSchema = new mongoose.Schema(
+    {
+        movie: {type: String, required: true, ref: 'Movie'},
+        showDateTime: { type: Date, required: true },
+        showPrice: { type: Number, required: true },
+        occupiedSeats: { type: Object, default:{} } 
+    }, { minimize: false}
+)
 
-    movie:{type:String,required:true, ref:'Movie'},
-    showDateTime :{type:Date,required:true},
-    showPrice:{type:Number,required:true},
-    occupiedSeats:{type:Object,default:{}}
-
-},{minimize:false}) // minimize allows ocuupied seats to initialize with default empty object
-
-
-const Show=mongoose.model('Show',Showschema);
+const Show = mongoose.model("Show", showSchema);
 
 export default Show;
-
-// modules.export={
-//     Show
-// }
