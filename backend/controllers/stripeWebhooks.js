@@ -1,4 +1,4 @@
-import stripe from "stripe";
+import Stripe from "stripe";
 import Booking from '../models/Booking.js'
 import { inngest } from "../inngest/index.js";
 
